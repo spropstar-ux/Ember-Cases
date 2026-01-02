@@ -157,6 +157,25 @@ document.addEventListener('DOMContentLoaded', function () {
       sendEmail(form);
     });
   });
+
+  // Smooth scroll for CTA buttons
+  document.querySelectorAll('.cta-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const href = btn.getAttribute('href');
+      if (href && href !== '#') return; // leave external/real links alone
+      e.preventDefault();
+      // prefer a form-card inside the same section as the clicked CTA
+      const section = btn.closest('section');
+      let target = section ? section.querySelector('.form-card') : null;
+      if (!target) target = document.querySelector('.form-card') || document.querySelector('.lead-form');
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        const firstInput = target.querySelector('input, select, textarea, button');
+        if (firstInput) firstInput.focus({preventScroll: true});
+      }
+    });
+  });
+
 });
 
 

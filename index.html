@@ -182,9 +182,10 @@
                     </article>
                 </div>
 
-                <div class="process-cta">
-                    <a class="process-btn" href="#">Obtenga su cotización gratuita</a>
-                </div>
+              <div class="cta-wrap">
+                        <a class="cta-btn" href="#">Obtenga su cotización gratuita</a>
+                    </div>
+                
             </div>
         </section>
         <section class="nationwide-section">
@@ -427,4 +428,14 @@
     
 </body>
 <script src="script.js"></script>
+<script>
+    (function(){
+        var p = window.location.pathname;
+        if (p.endsWith('.html')) {
+            var newP = p.replace(/\.html$/, '');
+            if (newP.endsWith('/index')) newP = newP.replace(/\/index$/, '/');
+            history.replaceState(null, '', newP + window.location.search + window.location.hash);
+        }
+    })();
+</script>
 </html>

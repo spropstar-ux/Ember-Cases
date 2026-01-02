@@ -49,7 +49,7 @@
  <!-- NAVBAR -->
         <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5">
             <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-                <a href="index.html" class="flex items-center">
+                <a href="/" class="flex items-center">
                     <img src="https://res.cloudinary.com/de7y9vclv/image/upload/v1767108814/Ember_Homes_fxdayq_celndi.png" alt="Ember Casas Logo" class="mr-3 h-6 sm:h-9 hover:transition-transform hover:scale-105 duration-300">
                     <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white" style="color: #EBC14D;">Ember <span style="font-weight: 400;">Casas</span></span>
                 </a>
@@ -268,6 +268,16 @@
   (function(){
     var el = document.getElementById('currentYear');
     if(el) el.textContent = new Date().getFullYear();
+  })();
+</script>
+<script>
+  (function(){
+    var p = window.location.pathname;
+    if (p.endsWith('.html')) {
+      var newP = p.replace(/\.html$/, '');
+      if (newP.endsWith('/index')) newP = newP.replace(/\/index$/, '/');
+      history.replaceState(null, '', newP + window.location.search + window.location.hash);
+    }
   })();
 </script>
 </body>
